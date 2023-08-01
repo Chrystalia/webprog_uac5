@@ -15,8 +15,14 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->enum('gender', ['Male', 'Female']);
+            $table->json('field_of_work_interests');
+            $table->string('linkedin_username');
+            $table->string('mobile_number');
+            $table->integer('registration_price')->nullable();
+            $table->string('location');
+            $table->decimal('money')->default(0);
+            $table->string('photo')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
